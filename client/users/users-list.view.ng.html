@@ -1,0 +1,49 @@
+<div class="users-list container">
+  <div class="row">
+    <div class="panel panel-default bdt-panel-with-btn">
+      <div class="panel-heading">
+        <h3 class="panel-title pull-left">Total: {{users.length}}</h3>
+        <button class="btn btn-success pull-right" ng-click="addUser()">
+          <i class="fa fa-plus"></i>
+        </button>
+        <span class="clearfix"></span>
+      </div>
+      <div class="panel-body">
+        <div class="row mb-15">
+          <div class="col-md-12">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-bordered mb-0">
+                <thead>
+                  <tr>
+                    <th>
+                      <i class="fa fa-envelope"></i> E-Mail
+                    </th>
+                    <th>
+                      <i class="fa fa-thumbs-up"></i> Roles
+                    </th>
+                  </tr>
+                </thead>
+                  <tbody>
+                    <tr ng-repeat="user in users">
+                      <td>
+                        {{user.emails[0].address}}
+                        <span ng-if="user._id == loggedUser._id"> (you)</span>
+                      </td>
+                      <td>
+                        <span>{{user.profile.roles | dataList}}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

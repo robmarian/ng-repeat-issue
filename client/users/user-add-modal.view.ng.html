@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+      <i class="fa fa-plus"></i> New user
+    </h3>
+</div>
+<div class="modal-body">
+  <form name="newUserForm">
+    <div class="row">
+      <div class="col-md-12">
+        <label>
+          <i class="fa fa-envelope"></i> E-mail
+        </label>
+        <div class="form-group"
+             ng-class="{'has-error': newUserForm.email.$touched && newUserForm.email.$invalid}">
+          <input class="form-control"
+                 type="email"
+                 name="email"
+                 required
+                 ng-model="user.email">
+          <div class="help-block"
+               ng-show="newUserForm.email.$touched && newUserForm.email.$error.required">
+               Required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group"
+             ng-class="{'has-error': newUserForm.password.$touched && newUserForm.password.$invalid}">
+          <label for="password">
+            <i class="fa fa-lock"></i> Password
+          </label>
+          <input class="form-control"
+                 type="password"
+                 name="password"
+                 ng-model="user.password"
+                 ng-minlength="6"
+                 required>
+          <div class="help-block" ng-show="newUserForm.password.$touched && newUserForm.password.$error.minlength">
+            Minimun length must be 6
+          </div>
+          <div class="help-block" ng-show="newUserForm.password.$touched && newUserForm.password.$error.required">
+            Required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>
+          <i class="fa fa-thumbs-up"></i> Roles
+        </label>
+        <div class="checkbox" ng-repeat="role in roles">
+          <label>
+            <input type="checkbox"
+                   ng-click="toggleRole(role)"
+                   ng-checked="hasRole(role)"> {{role}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <div class="btn-group">
+    <button class="btn btn-success"
+            type="button"
+            ng-disabled="newUserForm.$invalid"
+            ng-click="ok()">
+      <i class="fa fa-plus"></i>
+    </button>
+    <button class="btn btn-danger" type="button" ng-click="cancel()">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+</div>
